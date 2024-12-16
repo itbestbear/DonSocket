@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="DonSocket">
+      <UniqueIdentifier>{97cbde27-b979-4135-b563-054fc5f484f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{8f73f761-dd65-47f8-af3f-c528be028ea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommandEngine">
+      <UniqueIdentifier>{d5975e2f-6538-4022-bf07-e1cb547829d9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="client.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\DonSocket\Buffer.cpp">
+      <Filter>DonSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DonSocket\Iocp.cpp">
+      <Filter>DonSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DonSocket\Socket.cpp">
+      <Filter>DonSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DonSocket\DonTcpClient.cpp">
+      <Filter>DonSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DonSocket\DonTcpServer.cpp">
+      <Filter>DonSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DonSocket\Epoll.cpp">
+      <Filter>DonSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DonSocket\Select.cpp">
+      <Filter>DonSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DonSocket\Kqueue.cpp">
+      <Filter>DonSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="client_command_callback.cpp" />
+    <ClCompile Include="..\Util\Log.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Util\Util.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="client_socket_callback.cpp" />
+    <ClCompile Include="..\Util\Console.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommandEngine\CommandObject.cpp">
+      <Filter>CommandEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommandEngine\Executer.cpp">
+      <Filter>CommandEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommandEngine\ExecuterThread.cpp">
+      <Filter>CommandEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommandEngine\CommandEngine.cpp">
+      <Filter>CommandEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd_sendall.cpp" />
+    <ClCompile Include="cmd_test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="client.h" />
+    <ClInclude Include="..\DonSocket\Buffer.h">
+      <Filter>DonSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DonSocket\Iocp.h">
+      <Filter>DonSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DonSocket\Message.h">
+      <Filter>DonSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DonSocket\Socket.h">
+      <Filter>DonSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DonSocket\DonTcpClient.h">
+      <Filter>DonSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DonSocket\DonTcpServer.h">
+      <Filter>DonSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DonSocket\MemPool.h">
+      <Filter>DonSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DonSocket\Epoll.h">
+      <Filter>DonSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DonSocket\Select.h">
+      <Filter>DonSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DonSocket\Kqueue.h">
+      <Filter>DonSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DonSocket\Config.h">
+      <Filter>DonSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="client_command_callback.h" />
+    <ClInclude Include="..\Util\Log.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Util\Util.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="client_socket_callback.h" />
+    <ClInclude Include="..\Util\Console.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommandEngine\CommandObject.h">
+      <Filter>CommandEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommandEngine\Executer.h">
+      <Filter>CommandEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommandEngine\ExecuterThread.h">
+      <Filter>CommandEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommandEngine\CommandEngine.h">
+      <Filter>CommandEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd_sendall.h" />
+    <ClInclude Include="cmd_test.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DonTcpClient.pro" />
+  </ItemGroup>
+</Project>
