@@ -917,10 +917,6 @@ bool CDonTcpClient::ProcessWrite(size_t index, size_t size)
 
 bool CDonTcpClient::ProcessRead(size_t index, size_t size)
 {
-	// 临时接收缓存，接收后复制消息到这里，使得回调中能发送消息
-	char msg_buf[1024];
-	int msg_len = 0;
-
 	SOCK_DATA* pSock = LockSock(index);
 
 	if (NULL == pSock)
@@ -962,32 +958,39 @@ bool CDonTcpClient::ProcessRead(size_t index, size_t size)
 	}
 #endif
 
-	//只处理一条消息
-	msg_len = pSock->pRecvBuf->PopMsg(msg_buf, sizeof(msg_buf));
-	if (msg_len == BUFFER_WAITING)
+	//处理所有消息
+	while (true)
 	{
-		log_trace_error("[read] ProcessRead PopMsg error,msg is too short,do nothing");
-		UnlockSock(index);
-		return false;
-	}
-	if (msg_len == BUFFER_ERROR)
-	{
-		log_trace_error("[read] ProcessRead PopMsg error,msg is too long,discard");
-		UnlockSock(index);
-		return false;
-	}
-	if (msg_len == BUFFER_EMPTY)
-	{
-		log_trace_error("[read] ProcessRead PopMsg error,buffer is empty,return");
-		UnlockSock(index);
-		return false;
-	}
-	UnlockSock(index);
+		char msg_buf[1024];
+		int msg_len = 0;
 
-	if (m_pCallBack && msg_len)
-	{
-		m_pCallBack->OnReceive(index, msg_buf, msg_len);
+		msg_len = pSock->pRecvBuf->PopMsg(msg_buf, sizeof(msg_buf));
+		if (msg_len == BUFFER_WAITING)
+		{
+			log_trace_error("[read] ProcessRead PopMsg error,msg is too short,do nothing");
+			UnlockSock(index);
+			return false;
+		}
+		if (msg_len == BUFFER_ERROR)
+		{
+			log_trace_error("[read] ProcessRead PopMsg error,msg is too long,discard");
+			UnlockSock(index);
+			return false;
+		}
+		if (msg_len == BUFFER_EMPTY)
+		{
+			//log_trace_error("[read] ProcessRead PopMsg error,buffer is empty,return");
+			UnlockSock(index);
+			return false;
+		}
+
+		if (m_pCallBack && msg_len)
+		{
+			m_pCallBack->OnReceive(index, msg_buf, msg_len);
+		}
 	}
+	
+	UnlockSock(index);
 
 	return true;
 }
